@@ -47,7 +47,7 @@ export default function Home() {
 
           {/* ➕ Add New Habit Button */}
           <div className="w-full flex justify-end">
-            <button className="flex items-center gap-2 bg-gray-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-gray-600 transition">
+            <button className="flex items-center gap-2 bg-neutral-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-neutral-600 transition">
               <FiPlus />
               New Habit
             </button>
