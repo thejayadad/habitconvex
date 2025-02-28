@@ -1,5 +1,6 @@
 "use client";
 import Header from "@/components/header/header";
+import HabitModal from "@/components/modal/habit-modal";
 import { useState } from "react";
 import { FiList, FiGrid, FiPlus, FiCheckCircle, FiCircle } from "react-icons/fi";
 
@@ -59,7 +60,7 @@ export default function Home() {
             </button>
 
             {/* 🔳 Grid View Tab */}
-            <button
+            <div
               onClick={() => setActiveTab(2)}
               className={`w-full flex items-center justify-center gap-2 py-3 px-4 font-medium border dark:border-neutral-700 rounded-t-md transition-all
                 ${activeTab === 2 ? "bg-white dark:bg-[#333] text-black dark:text-white border-b-0" : "bg-gray-100 dark:bg-[#3A3B3C] text-gray-600 dark:text-gray-300 border-b"}
@@ -67,16 +68,12 @@ export default function Home() {
             >
               <FiGrid className="text-lg" />
               Grid View
-            </button>
+            </div>
           </div>
 
           {/* ➕ Add New Habit Button */}
-          <div className="w-full flex justify-end">
-            <button className="flex items-center gap-2 bg-neutral-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-neutral-600 transition">
-              <FiPlus />
-              New Habit
-            </button>
-          </div>
+            <HabitModal
+            />
         </div>
 
         {/* Tab Content */}
@@ -118,12 +115,12 @@ export default function Home() {
             <div className="grid grid-cols-3 sm:grid-cols-6 gap-1">
               {habits.map((habit) => (
                 <div key={habit.id} className=" border border-neutral-200 dark:border-neutral-700  shadow-sm bg-gray-50 dark:bg-[#3A3B3C]">
-                  <h2 className="text-md font-semibold text-neutral-800 dark:text-white grid place-content-center bg-neutral-300"> 
+                  <h2 className="text-md font-semibold text-neutral-800 dark:text-white grid place-content-center"> 
                     {habit.name}
                   </h2>
                   <div className="flex flex-wrap justify-center">
                     {days.map((day) => (
-                      <button
+                      <div
                         key={day}
                         className="flex items-center justify-between w-full px-3 py-2  dark:bg-[#242526]  border border-neutral-200 dark:border-neutral-700"
                         onClick={() => toggleCompletion(habit.id, day)}
@@ -134,7 +131,7 @@ export default function Home() {
                         ) : (
                           <FiCircle className="text-gray-400" />
                         )}
-                      </button>
+                      </div>
                     ))}
                   </div>
                 </div>
